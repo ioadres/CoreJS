@@ -3,7 +3,6 @@ app.core = app.core || {};
 
 (function () {
   'use strict';
-  
   app.core.framework = app.core.framework || {};
 
   var self = app.core.framework;
