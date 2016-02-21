@@ -3,8 +3,8 @@ app.core = app.core || {};
 
 (function () {
   'use strict';
+  
   app.core.framework = app.core.framework || {};
-
   var self = app.core.framework;
   self.temp = self.temp || {};
 
@@ -94,7 +94,6 @@ app.core = app.core || {};
 
 
 // initialize modules
-
 (function () {
   'use strict';
   app.core.framework = app.core.framework || {};
@@ -105,18 +104,20 @@ app.core = app.core || {};
     var paths = [];
     paths[0] = "http://127.0.0.1:8080/Module/References/Core.UserFriendList.js";
 
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = true;
-    script.src = paths[0];
-    document.getElementsByTagName('head')[0].appendChild(script);
+    for (var index = 0; index < paths.length; index++) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = paths[index];
+        document.getElementsByTagName('head')[0].appendChild(script);
 
-    script.onload = function(){
-      var path = paths[0].split('/').pop();
-      var pathScript = self.temp[path][0];
-      self.utilities.registerJs(pathScript, self.temp[path], 0);
-    };
-
+        script.onload = function(){
+        var path = paths[0].split('/').pop();
+        var pathScript = self.temp[path][0];
+        self.utilities.registerJs(pathScript, self.temp[path], 0);
+        };
+        
+    }
 
   }();
 
